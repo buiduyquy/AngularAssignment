@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "ListView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Objects</h2>
+<style>
+    #mydiv {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        background-color: grey;
+        opacity: .8;
+    }
+
+    .ajax-loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -32px; /* -1 * image width / 2 */
+        margin-top: -32px; /* -1 * image height / 2 */
+        display: block;
+    }
+</style>
+<div data-ng-app data-ng-controller="redditController" class="container">
+    <strong class="error">{{ error }}</strong>
+  
+    <span class="pull-right">
+        <input type="checkbox" ng-model="$scope.filters.includeApproved" /> Approved
+    </span>
+    
+   
+    
+    <table class="table table-bordered table-hover" style="width:800px">
+        <tr>
+            <th>#</th>
+            <td>Name</td>
+        </tr>
+
+        <tr data-ng-repeat="friend in friends">
+            <td><strong>{{ friend.id }}</strong></td>
+            <td>
+                <p>{{ friend.name }}</p>
+            </td>
+          
+          
+            
+            <td>
+                <p ><a data-ng-hide="friend.isApprove" data-ng-click="Approve(friend)" href="javascript:;">approve</a> 
+                <a data-ng-show="friend.isApprove" data-ng-click="DisApprove(friend)" href="javascript:;">disapprove </a></p>
+             </td>
+        </tr>
+    </table>
+    <hr />
+
+
+</div>
+
